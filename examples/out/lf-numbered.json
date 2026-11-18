@@ -1,0 +1,116 @@
+{
+  "tool": "ck-context-loss-audit",
+  "version": "1.0.0",
+  "upstream": {
+    "repo": "affaan-m/ECC",
+    "pinned_commit": "3f14a103a8694e51c1df9a806217a6d0b5f7a6f7",
+    "file": "skills/ck/commands/migrate.mjs",
+    "source_lines": {
+      "extractSection": "26-30",
+      "parseBullets": "32-37",
+      "context_json": "97-107",
+      "backup": "178-181"
+    }
+  },
+  "project": "/home/ubuntu/GitHub/work/trending/ecc-context-loss-audit/examples/in/lf-numbered",
+  "mode": "migrate",
+  "input_sha256": "3457c3f4c087564cb35c7432b0427b7028a5de69e81e227a20c34e5545d6c2c5",
+  "predicted": {
+    "sections": {
+      "What This Is": true,
+      "Tech Stack": true,
+      "Current Goal": true,
+      "Where I Left Off": true,
+      "Next Steps": true,
+      "Blockers": true,
+      "Do Not Do": true,
+      "Decisions Made": true
+    },
+    "next_steps": [],
+    "constraints": [],
+    "decisions": 1,
+    "content_lines": 13,
+    "content_lines_preserved": 9,
+    "lost_lines": [
+      {
+        "line": 19,
+        "text": "1. Run the suite.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 20,
+        "text": "2. Publish the release.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 21,
+        "text": "10. Tag the release.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 27,
+        "text": "1. Do not touch production.",
+        "section": "Decisions Made"
+      }
+    ],
+    "predicted_markdown_sha256": "ee8439a8a6aa9e3b32dbdc77d3a09b10b9dc240d3855540576bbbf939db8a1d5"
+  },
+  "findings": [
+    {
+      "code": "CONTEXT_JSON_ABSENT",
+      "severity": "info",
+      "message": "no context.json yet: this is a first migration."
+    },
+    {
+      "code": "NUMBERED_STEP_DROPPED",
+      "severity": "error",
+      "message": "standard Markdown numbered item is rejected by parseBullets() (filter needs one digit or bullet followed by whitespace, L32-37); the item disappears from the regenerated file: '1. Run the suite.'",
+      "line": 19,
+      "section": "Next Steps",
+      "text": "1. Run the suite.",
+      "regex": "^[-*\\d]\\s"
+    },
+    {
+      "code": "NUMBERED_STEP_DROPPED",
+      "severity": "error",
+      "message": "standard Markdown numbered item is rejected by parseBullets() (filter needs one digit or bullet followed by whitespace, L32-37); the item disappears from the regenerated file: '2. Publish the release.'",
+      "line": 20,
+      "section": "Next Steps",
+      "text": "2. Publish the release.",
+      "regex": "^[-*\\d]\\s"
+    },
+    {
+      "code": "NUMBERED_STEP_DROPPED",
+      "severity": "error",
+      "message": "standard Markdown numbered item is rejected by parseBullets() (filter needs one digit or bullet followed by whitespace, L32-37); the item disappears from the regenerated file: '10. Tag the release.'",
+      "line": 21,
+      "section": "Next Steps",
+      "text": "10. Tag the release.",
+      "regex": "^[-*\\d]\\s"
+    },
+    {
+      "code": "NUMBERED_STEP_DROPPED",
+      "severity": "error",
+      "message": "standard Markdown numbered item is rejected by parseBullets() (filter needs one digit or bullet followed by whitespace, L32-37); the item disappears from the regenerated file: '1. Do not touch production.'",
+      "line": 27,
+      "section": "Do Not Do",
+      "text": "1. Do not touch production.",
+      "regex": "^[-*\\d]\\s"
+    },
+    {
+      "code": "CONTEXT_MD_NO_BACKUP",
+      "severity": "warning",
+      "message": "migrate.mjs renames only meta.json to meta.json.v1-backup (L178-181); the original CONTEXT.md is overwritten with no rollback copy."
+    },
+    {
+      "code": "DECISION_DATE_REWRITTEN",
+      "severity": "warning",
+      "message": "1 decision row(s) carry their own date, but the renderer overwrites the Date column with the session date (2026-11-10): 2026-11-01"
+    }
+  ],
+  "summary": {
+    "errors": 4,
+    "warnings": 2,
+    "infos": 1
+  }
+}

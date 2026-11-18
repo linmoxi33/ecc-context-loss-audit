@@ -1,0 +1,3 @@
+#!/bin/sh
+# Thin launcher; the audit itself is ../ck_context_audit.py (stdlib only).
+exec python3 "$(dirname "$0")/../ck_context_audit.py" "$@"

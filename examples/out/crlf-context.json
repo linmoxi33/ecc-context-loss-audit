@@ -1,0 +1,121 @@
+{
+  "tool": "ck-context-loss-audit",
+  "version": "1.0.0",
+  "upstream": {
+    "repo": "affaan-m/ECC",
+    "pinned_commit": "3f14a103a8694e51c1df9a806217a6d0b5f7a6f7",
+    "file": "skills/ck/commands/migrate.mjs",
+    "source_lines": {
+      "extractSection": "26-30",
+      "parseBullets": "32-37",
+      "context_json": "97-107",
+      "backup": "178-181"
+    }
+  },
+  "project": "/home/ubuntu/GitHub/work/trending/ecc-context-loss-audit/examples/in/crlf-context",
+  "mode": "migrate",
+  "input_sha256": "5f78a7fadbbd119b23c6463631d36b3bbc5ffc4a5c90ae5c66bda8c6b5c2879f",
+  "predicted": {
+    "sections": {
+      "What This Is": false,
+      "Tech Stack": false,
+      "Current Goal": false,
+      "Where I Left Off": false,
+      "Next Steps": false,
+      "Blockers": false,
+      "Do Not Do": false,
+      "Decisions Made": false
+    },
+    "next_steps": [],
+    "constraints": [],
+    "decisions": 0,
+    "content_lines": 12,
+    "content_lines_preserved": 2,
+    "lost_lines": [
+      {
+        "line": 5,
+        "text": "A demo project that ships a CLI.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 8,
+        "text": "- Python",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 9,
+        "text": "- SQLite",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 12,
+        "text": "Ship the CLI.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 15,
+        "text": "- Wrote the parser.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 16,
+        "text": "- Added fixtures.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 19,
+        "text": "- Run the suite.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 20,
+        "text": "- Publish the release.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 26,
+        "text": "- Do not touch production.",
+        "section": "Decisions Made"
+      },
+      {
+        "line": 31,
+        "text": "| Python | stdlib only | 2026-11-01 |",
+        "section": "Decisions Made"
+      }
+    ],
+    "predicted_markdown_sha256": "8f289a71190900432e0f404d7ac6bc568bef989c7b034d609671ce625df4cc70"
+  },
+  "findings": [
+    {
+      "code": "CONTEXT_JSON_ABSENT",
+      "severity": "info",
+      "message": "no context.json yet: this is a first migration."
+    },
+    {
+      "code": "CRLF_SECTION_WIPE",
+      "severity": "error",
+      "message": "CONTEXT.md uses CRLF (31 CRLF bytes). extractSection() looks for '## Heading\\n' and therefore matches none of the 8 headings: every section is written back as a placeholder (_Not set._ / _(none yet)_), and CONTEXT.md has no backup.",
+      "crlf_bytes": 31,
+      "sections_at_risk": [
+        "What This Is",
+        "Tech Stack",
+        "Current Goal",
+        "Where I Left Off",
+        "Next Steps",
+        "Blockers",
+        "Do Not Do",
+        "Decisions Made"
+      ]
+    },
+    {
+      "code": "CONTEXT_MD_NO_BACKUP",
+      "severity": "warning",
+      "message": "migrate.mjs renames only meta.json to meta.json.v1-backup (L178-181); the original CONTEXT.md is overwritten with no rollback copy."
+    }
+  ],
+  "summary": {
+    "errors": 1,
+    "warnings": 1,
+    "infos": 1
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "tool": "ck-context-loss-audit",
+  "version": "1.0.0",
+  "upstream": {
+    "repo": "affaan-m/ECC",
+    "pinned_commit": "3f14a103a8694e51c1df9a806217a6d0b5f7a6f7",
+    "file": "skills/ck/commands/migrate.mjs",
+    "source_lines": {
+      "extractSection": "26-30",
+      "parseBullets": "32-37",
+      "context_json": "97-107",
+      "backup": "178-181"
+    }
+  },
+  "project": "/home/ubuntu/GitHub/work/trending/ecc-context-loss-audit/examples/in/lf-clean",
+  "mode": "migrate",
+  "input_sha256": "21159a87bc2a059dcbce70192dc42587e065f26a321a7513ebe46af9784a09fc",
+  "predicted": {
+    "sections": {
+      "What This Is": true,
+      "Tech Stack": true,
+      "Current Goal": true,
+      "Where I Left Off": true,
+      "Next Steps": true,
+      "Blockers": true,
+      "Do Not Do": true,
+      "Decisions Made": true
+    },
+    "next_steps": [
+      "Run the suite.",
+      "Publish the release."
+    ],
+    "constraints": [
+      "Do not touch production."
+    ],
+    "decisions": 1,
+    "content_lines": 12,
+    "content_lines_preserved": 12,
+    "lost_lines": [],
+    "predicted_markdown_sha256": "09d0181c94c87313c08409523b5e78c1575d224228076e9f499072eaa7cf7bf1"
+  },
+  "findings": [
+    {
+      "code": "CONTEXT_JSON_ABSENT",
+      "severity": "info",
+      "message": "no context.json yet: this is a first migration."
+    },
+    {
+      "code": "CONTEXT_MD_NO_BACKUP",
+      "severity": "warning",
+      "message": "migrate.mjs renames only meta.json to meta.json.v1-backup (L178-181); the original CONTEXT.md is overwritten with no rollback copy."
+    },
+    {
+      "code": "DECISION_DATE_REWRITTEN",
+      "severity": "warning",
+      "message": "1 decision row(s) carry their own date, but the renderer overwrites the Date column with the session date (2026-11-10): 2026-11-01"
+    }
+  ],
+  "summary": {
+    "errors": 0,
+    "warnings": 2,
+    "infos": 1
+  }
+}
